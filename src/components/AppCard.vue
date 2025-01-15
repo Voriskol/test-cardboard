@@ -16,6 +16,9 @@
   background-color: rgb(143, 134, 134);
   overflow: auto;
   overflow-wrap: anywhere;
+  -webkit-box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
+  -moz-box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
+  box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
 
   p {
     color: white;
