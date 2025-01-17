@@ -8,7 +8,12 @@ body {
 
 textarea {
   border: none;
-  background-color: transparent;
   resize: none;
   outline: none;
+}
+
+@media (max-width: 1000px) {
+  section {
+    justify-content: center;
+  }
 }

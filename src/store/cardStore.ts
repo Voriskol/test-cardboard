@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import type { ICard } from "~/interfaces/ICard";
-import { useLocalStorage } from "@vueuse/core";
 
 export const useCardsStore = defineStore(
   "cards",

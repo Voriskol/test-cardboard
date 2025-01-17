@@ -24,34 +24,44 @@ const text = defineModel<string>();
         />
       </button>
     </div>
-
-    <textarea
-      class="stickerCard__text"
-      :disabled="!isEdit"
-      :placeholder="isEdit ? 'Напишите что-нибудь' : 'Пустая заметка'"
-      v-model="text"
-    ></textarea>
+    <div class="flex flex-grow items-center justify-center">
+      <textarea
+        v-if="isEdit && $route.name == 'settings'"
+        class="stickerCard__text"
+        :disabled="!isEdit"
+        placeholder="Напишите что-нибудь"
+        v-model="text"
+      ></textarea>
+      <p v-else>{{ text }}</p>
+    </div>
   </article>
 </template>
 
 <style scoped lang="scss">
 .stickerCard {
+  display: flex;
+  flex-direction: column;
   width: 250px;
   height: 250px;
   padding: 5px 10px;
-  margin-bottom: 25px;
   border-radius: 5px;
   background-color: rgb(143, 134, 134);
   overflow: auto;
-  overflow-wrap: anywhere;
   -webkit-box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
   -moz-box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
   box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
 
   &__text {
     width: 100%;
-    height: 70%;
-    margin-top: 20px;
+    height: 100%;
+    background-color: rgb(128, 120, 120);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  p {
     text-align: center;
     color: white;
     font-size: 20px;
