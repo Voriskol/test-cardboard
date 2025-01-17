@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-gray-800 h-screen">
+  <main>
     <AppHeader />
     <div class="p-5">
       <slot />
     </div>
-  </div>
+  </main>
 </template>

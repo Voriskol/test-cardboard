@@ -1,17 +1,45 @@
+<script setup lang="ts">
+import { useCardsStore } from "../store/cardStore";
+
+const { editCard, deleteCard } = useCardsStore();
+defineProps<{
+  id: string;
+  isEdit: boolean;
+}>();
+
+const text = defineModel<string>();
+</script>
+
 <template>
   <article class="stickerCard">
-    <p>Задача организации, в особенности же</p>
+    <div v-if="$route.name == 'settings'" class="flex justify-between">
+      <button @click="deleteCard(id)">
+        <Icon name="mdi:bucket" size="20px" style="color: rgb(33, 31, 31)" />
+      </button>
+      <button @click="editCard(id)">
+        <Icon
+          :name="isEdit ? 'mdi:checkbox-marked' : 'mdi:pencil'"
+          size="20px"
+          style="color: rgb(33, 31, 31)"
+        />
+      </button>
+    </div>
+
+    <textarea
+      class="stickerCard__text"
+      :disabled="!isEdit"
+      :placeholder="isEdit ? 'Напишите что-нибудь' : 'Пустая заметка'"
+      v-model="text"
+    ></textarea>
   </article>
 </template>
 
 <style scoped lang="scss">
 .stickerCard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 250px;
   height: 250px;
-  padding: 20px 10px;
+  padding: 5px 10px;
+  margin-bottom: 25px;
   border-radius: 5px;
   background-color: rgb(143, 134, 134);
   overflow: auto;
@@ -20,7 +48,11 @@
   -moz-box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
   box-shadow: 0px 4px 6px 2px rgb(30, 29, 33);
 
-  p {
+  &__text {
+    width: 100%;
+    height: 70%;
+    margin-top: 20px;
+    text-align: center;
     color: white;
     font-size: 20px;
     font-weight: 700;
