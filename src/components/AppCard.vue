@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useCardsStore } from "../store/cardStore";
 
 const { editCard, deleteCard } = useCardsStore();
