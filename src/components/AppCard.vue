@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useCardsStore } from "../store/cardStore";
 
 const { editCard, deleteCard } = useCardsStore();
@@ -7,12 +7,12 @@ defineProps<{
   isEdit: boolean;
 }>();
 
+const route = useRoute();
 const text = defineModel<string>();
 </script>
-
 <template>
   <article class="stickerCard">
-    <div v-if="$route.name == 'settings'" class="flex justify-between">
+    <div v-if="route.name == 'settings'" class="flex justify-between">
       <button @click="deleteCard(id)">
         <Icon name="mdi:bucket" size="20px" style="color: rgb(33, 31, 31)" />
       </button>
@@ -26,7 +26,7 @@ const text = defineModel<string>();
     </div>
     <div class="flex flex-grow items-center justify-center">
       <textarea
-        v-if="isEdit && $route.name == 'settings'"
+        v-if="isEdit && route.name == 'settings'"
         class="stickerCard__text"
         :disabled="!isEdit"
         placeholder="Напишите что-нибудь"
